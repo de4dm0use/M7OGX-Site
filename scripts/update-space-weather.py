@@ -3,6 +3,8 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+HISTORY = Path("data/space-weather-history.json")
+
 BASE = "https://services.swpc.noaa.gov"
 OUT = Path("data/space-weather.json")
 
@@ -32,6 +34,7 @@ def latest_value(data, keys):
 kp = get_json("/json/planetary_k_index_1m.json")
 flux = get_json("/json/f107_cm_flux.json")
 ssn = get_json("/json/solar-cycle/sunspots.json")
+wind = get_json("/products/summary/solar-wind-speed.json")
 
 result = {
     "updated": datetime.now(timezone.utc).isoformat(),
@@ -40,8 +43,17 @@ result = {
     "sunspots": latest_value(ssn, ["sunspot_number", "ssn", "sunspots"]),
     "kp": latest_value(kp, ["kp_index", "kp", "Kp"]),
     "aIndex": None,
-    "solarWind": None,
-    "note": "NOAA feed active. Additional solar-wind and A-index feeds will be added next."
+    "solarWind": latest_value(wind, ["speed", "solar_wind_speed", "value"]),
+    "note": "NOAA feed active."
 }
 OUT.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+
+try:
+    history = json.loads(HISTORY.read_text(encoding="utf-8")) if HISTORY.exists() else []
+except (json.JSONDecodeError, OSError):
+    history = []
+point = {k: result[k] for k in ("updated", "sfi", "sunspots", "kp", "solarWind")}
+history.append(point)
+history = history[-672:]
+HISTORY.write_text(json.dumps(history, indent=2) + "\n", encoding="utf-8")
 print(json.dumps(result, indent=2))
