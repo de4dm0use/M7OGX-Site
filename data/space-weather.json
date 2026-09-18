@@ -1,10 +1,10 @@
 {
-  "updated": null,
+  "updated": "2026-09-18T18:36:12.048720+00:00",
   "source": "NOAA SWPC",
-  "sfi": null,
-  "sunspots": null,
-  "kp": null,
+  "sfi": 94.0,
+  "sunspots": 76.0,
+  "kp": 0.0,
   "aIndex": null,
   "solarWind": null,
-  "note": "Live data is populated automatically by GitHub Actions."
+  "note": "NOAA feed active."
 }
