@@ -2,3 +2,5 @@
 .solar-widget{overflow:hidden}.solar-widget-frame{display:flex;justify-content:center;align-items:center;padding:1rem;overflow-x:auto}.solar-widget-frame img{max-width:100%;height:auto;display:block}
 
 .button.small{margin-top:0;padding:8px 12px;font-size:13px}.solar-widget{overflow:hidden}.solar-widget-frame{display:flex;justify-content:center;align-items:center;padding:1rem;overflow-x:auto}.solar-widget-frame img{max-width:100%;height:auto;display:block}
+
+.module-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:24px}.module-card{display:block;text-decoration:none;color:var(--text);padding:15px;border:1px solid var(--line);border-radius:10px;background:#0a0f15}.module-card b,.module-card span{display:block}.module-card span{color:var(--muted);font-size:12px;margin-top:3px}.module-card:hover{border-color:#355241;transform:translateY(-1px)}@media(max-width:600px){.module-grid{grid-template-columns:1fr}}
