@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="M7OGX Propagation Lab">
+  <title>Propagation Lab • M7OGX</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="dot"></span>M7OGX <span>RADIO LAB</span></a>
+    <nav><a href="index.html">Home</a><a class="active" href="propagation.html">Propagation</a></nav>
+  </header>
+  <main class="page">
+    <div class="page-title">
+      <div><p class="eyebrow">LIVE / ESTIMATED HF CONDITIONS</p><h1>Propagation Lab</h1><p>Quick station-level guidance for planning HF contacts. Values are indicative, not a replacement for a propagation model or on-air reports.</p></div>
+      <div class="status"><i></i><span id="updated">Demo data</span></div>
+    </div>
+
+    <section class="metrics" id="metrics"></section>
+
+    <section class="panel">
+      <div class="panel-head"><div><p class="eyebrow">BAND OUTLOOK</p><h2>HF bands</h2></div><span class="muted">20 W / UK station</span></div>
+      <div id="bands" class="bands"></div>
+    </section>
+
+    <section class="grid-two">
+      <section class="panel">
+        <div class="panel-head"><div><p class="eyebrow">STATION</p><h2>M7OGX</h2></div></div>
+        <div class="station">
+          <div><span>QTH</span><strong>UK</strong></div>
+          <div><span>RIG</span><strong>Yaesu FT-840</strong></div>
+          <div><span>POWER</span><strong>20 W</strong></div>
+          <div><span>ANTENNA</span><strong>~10 m wire / 9:1 UNUN</strong></div>
+        </div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div><p class="eyebrow">NEXT</p><h2>Propagation roadmap</h2></div></div>
+        <ul class="roadmap">
+          <li><b>01</b> Live solar-weather feed</li>
+          <li><b>02</b> Grey-line map</li>
+          <li><b>03</b> “Could I reach X?” calculator</li>
+          <li><b>04</b> Historical band charts</li>
+        </ul>
+      </section>
+    </section>
+  </main>
+  <script src="js/propagation.js"></script>
+</body>
+</html>
