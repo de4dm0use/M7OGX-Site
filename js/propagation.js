@@ -1,31 +1,5 @@
-const fallback={sfi:142,sunspots:128,kp:2,aIndex:null,solarWind:null};
-const fallbackBands=[["80m",48,"Night"],["40m",78,"Good"],["30m",82,"Good"],["20m",94,"Excellent"],["17m",88,"Excellent"],["15m",70,"Fair"],["12m",56,"Variable"],["10m",43,"Variable"]];
-
-function metric(label,value,suffix=""){
-  return `<div class="metric"><small>${label}</small><strong>${value ?? "—"}${suffix}</strong></div>`;
-}
-
-function render(d){
-  const data={...fallback,...d};
-  document.getElementById("metrics").innerHTML=[
-    metric("Solar Flux",data.sfi),
-    metric("Sunspots",data.sunspots),
-    metric("Kp Index",data.kp),
-    metric("Solar Wind",data.solarWind," km/s")
-  ].join("");
-
-  document.getElementById("bands").innerHTML=fallbackBands.map(([band,score,label])=>`
-    <div class="band"><strong>${band}</strong>
-      <div class="bar"><i style="width:${score}%"></i></div>
-      <span>${label} · estimate</span>
-    </div>`).join("");
-
-  document.getElementById("updated").textContent=data.updated
-    ? `NOAA · ${new Date(data.updated).toLocaleString()}`
-    : "Prototype conditions";
-}
-
-fetch("data/space-weather.json",{cache:"no-store"})
-  .then(r=>r.ok?r.json():Promise.reject())
-  .then(render)
-  .catch(()=>render(fallback));
+function metric(label,value,suffix=""){return `<div class="metric"><small>${label}</small><strong>${value ?? "—"}${suffix}</strong></div>`}
+const bandDefs=[["80m","Night"],["40m","Good"],["30m","Good"],["20m","Excellent"],["17m","Excellent"],["15m","Fair"],["12m","Variable"],["10m","Variable"]];
+function bandScore(name,sfi,kp){if(sfi==null||kp==null)return null;const base={"80m":48,"40m":76,"30m":80,"20m":92,"17m":86,"15m":68,"12m":54,"10m":42}[name];const solarBoost=Math.max(-12,Math.min(12,(Number(sfi)-100)*0.18));const geomagPenalty=Math.max(0,Number(kp)-2)*7;return Math.max(5,Math.min(100,Math.round(base+solarBoost-geomagPenalty)));}
+function render(d){const data=d||{};document.getElementById("metrics").innerHTML=[metric("Solar Flux",data.sfi),metric("Sunspots",data.sunspots),metric("Kp Index",data.kp),metric("Solar Wind",data.solarWind," km/s")].join("");document.getElementById("bands").innerHTML=bandDefs.map(([band,label])=>{const score=bandScore(band,data.sfi,data.kp);return `<div class="band"><strong>${band}</strong><div class="bar"><i style="width:${score??0}%"></i></div><span>${score==null?"Awaiting live data":label+" · heuristic"}</span></div>`}).join("");document.getElementById("updated").textContent=data.updated?`NOAA · ${new Date(data.updated).toLocaleString()}`:"Live data unavailable";}
+fetch("data/space-weather.json",{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject()).then(render).catch(()=>render({}));
