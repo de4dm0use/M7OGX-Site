@@ -1,30 +1,25 @@
-# M7OGX Site
+# M7OGX Radio Lab
 
 Personal amateur-radio GitHub Pages project for **M7OGX**.
 
-## Propagation Lab
+## Modules
 
-The first module provides a radio-shack-style HF propagation dashboard with:
+- **Propagation** — space-weather metrics, HF band estimates and live HamQSL solar-terrestrial graphic.
+- **Grey Line** — browser-side day/night terminator visualisation.
+- **Repeater Explorer** — searchable Nottingham-area repeater set with DMR/FM access details.
+- **APRS Explorer** — local APRS position-packet builder and copy tool.
+- **Satellite Tracker** — live CelesTrak station orbital elements with browser-side SGP4 tracking.
+- **OpenGD77 Lab** — MD-UV380 operating notes, DMR calculator and bindings notebook.
+- **Radio Tools** — wavelength, DMR colour-code, Morse, QSO practice, PSK31/Varicode and repeater-tone utilities.
+- **Logbook** — local browser QSO log with CSV export.
 
-- Solar Flux Index
-- Sunspot number
-- Kp index
-- Solar-wind speed
-- 80–10 m band outlook
-- M7OGX station profile
-- Roadmap for live propagation tooling
+## Data and privacy
 
-### Important
+The site is static and GitHub Pages friendly. The logbook uses browser localStorage and is not uploaded by the site itself. The APRS builder only creates text; it does not transmit anything.
+Propagation values come from the repository's generated space-weather JSON when available. The HF band scores are heuristic estimates, not a propagation prediction. The HamQSL graphic is loaded live from HamQSL.
+Satellite tracking uses CelesTrak GP/TLE data and the open-source satellite.js library.
 
-The current values are **prototype/demo values**. Band percentages are a UI prototype, not a scientific propagation forecast.
+## Development
 
-## Roadmap
-
-1. Live NOAA space-weather data
-2. Automatic GitHub Actions data refresh
-3. Grey-line visualisation
-4. UK → target-distance calculator
-5. MUF/critical-frequency estimates
-6. Historical propagation graphs
-
-Built as a lightweight static site so it can run on GitHub Pages.
+No build system is required. Edit the HTML/CSS/JS files and push to main.
+The GitHub Pages deployment workflow is in .github/workflows/deploy-pages.yml.
