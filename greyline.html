@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grey Line • M7OGX</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+<a class="brand" href="index.html"><span class="dot"></span>M7OGX <span>RADIO LAB</span></a>
+<nav><a href="index.html">Home</a><a href="propagation.html">Propagation</a><a class="active" href="greyline.html">Grey Line</a></nav>
+</header>
+<main class="page">
+<div class="page-title"><div><p class="eyebrow">DAY / NIGHT TERMINATOR</p><h1>Grey Line</h1><p>A lightweight visualisation of the approximate solar terminator. The map is an educational station-planning aid, not a precise radio-propagation model.</p></div></div>
+<section class="panel">
+<div class="panel-head"><div><p class="eyebrow">LIVE FROM YOUR CLOCK</p><h2 id="clock">Loading…</h2></div><span class="muted">UTC</span></div>
+<svg id="world" viewBox="0 0 1000 500" role="img" aria-label="Approximate world day and night map"></svg>
+<div class="legend"><span><i class="day"></i>Day</span><span><i class="night"></i>Night</span><span><i class="line"></i>Grey line</span></div>
+</section>
+<section class="grid-two">
+<section class="panel"><p class="eyebrow">M7OGX</p><h2>Station</h2><div class="station"><div><span>QTH</span><strong>UK</strong></div><div><span>POWER</span><strong>20 W</strong></div></div></section>
+<section class="panel"><p class="eyebrow">HF TIP</p><h2>Grey-line window</h2><p class="muted">Contacts near sunrise and sunset can sometimes benefit from lower absorption on suitable paths. Check actual band conditions and reports before transmitting.</p></section>
+</section>
+</main>
+<script src="js/greyline.js"></script>
+</body>
+</html>
