@@ -271,5 +271,12 @@
     "sunspots": 76.0,
     "kp": 0.0,
     "solarWind": null
+  },
+  {
+    "updated": "2026-09-24T21:39:57.604360+00:00",
+    "sfi": 113.0,
+    "sunspots": 76.0,
+    "kp": 1.0,
+    "solarWind": null
   }
 ]
