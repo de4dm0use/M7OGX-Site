@@ -1,9 +1,9 @@
 {
-  "updated": "2026-10-06T14:21:15.931498+00:00",
+  "updated": "2026-10-06T19:40:23.316190+00:00",
   "source": "NOAA SWPC",
   "sfi": 131.0,
   "sunspots": 60.3,
-  "kp": 1.0,
+  "kp": 2.0,
   "aIndex": null,
   "solarWind": null,
   "note": "NOAA feed active."
